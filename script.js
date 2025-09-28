@@ -52,6 +52,7 @@ const questions = [
     currentQuestionIndex++;
     if(currentQuestionIndex < questions.length)
     showQuestions();
+    else showResult();
   })
 
   function showQuestions(){
@@ -69,6 +70,12 @@ const questions = [
     nextBtn.classList.remove("hidden");
   }
 
+  function showResult(){
+    questionContainer.classList.add("hidden");
+    nextBtn.classList.add("hidden")
+    resultContainer.classList.remove("hidden");
+    scoreMassage.innerText = `${score}`
+  }
 
 
 })
