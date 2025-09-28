@@ -40,11 +40,11 @@ const questions = [
   startBtn.addEventListener("click", showQuestions);
 
   choicesList.addEventListener("click", (e) => {
-    console.log(e.target.tagname)
-    let ans = questions[currentQuestionIndex].answer;
-    if(ans === e.target.innerText){
-      score++;
-      console.log("ans is right")
+    if(e.target.tagName === "p"){
+       let ans = questions[currentQuestionIndex].answer;
+       if(ans === e.target.innerText){
+         score++;
+       }
     }
   })
 
@@ -53,6 +53,13 @@ const questions = [
     if(currentQuestionIndex < questions.length)
     showQuestions();
     else showResult();
+  })
+
+  restartBtn.addEventListener("click", () => {
+    resultContainer.classList.add("hidden");
+    score = 0;
+    currentQuestionIndex = 0;
+    startBtn.classList.remove("hidden")
   })
 
   function showQuestions(){
