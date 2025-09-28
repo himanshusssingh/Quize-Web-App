@@ -44,15 +44,21 @@ const questions = [
     let ans = questions[currentQuestionIndex].answer;
     if(ans === e.target.innerText){
       score++;
-      nextBtn.classList.remove("hidden")
       console.log("ans is right")
     }
+  })
+
+  nextBtn.addEventListener("click", () => {
+    currentQuestionIndex++;
+    if(currentQuestionIndex < questions.length)
+    showQuestions();
   })
 
   function showQuestions(){
     questionContainer.classList.remove("hidden");
     startBtn.classList.add("hidden")
     questionText.innerText = `${questions[currentQuestionIndex].question}`;
+    choicesList.innerText = ''
     questions[currentQuestionIndex].choices.forEach((choice) => showOptions(choice))
   }
 
