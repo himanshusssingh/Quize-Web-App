@@ -39,6 +39,16 @@ const questions = [
 
   startBtn.addEventListener("click", showQuestions);
 
+  choicesList.addEventListener("click", (e) => {
+    console.log(e.target.tagname)
+    let ans = questions[currentQuestionIndex].answer;
+    if(ans === e.target.innerText){
+      score++;
+      nextBtn.classList.remove("hidden")
+      console.log("ans is right")
+    }
+  })
+
   function showQuestions(){
     questionContainer.classList.remove("hidden");
     startBtn.classList.add("hidden")
@@ -48,7 +58,7 @@ const questions = [
 
   function showOptions(choice){
     let li = document.createElement("li");
-    li.innerText = `${choice}`
+    li.innerHTML = `<p>${choice}</p>`
     choicesList.appendChild(li);
     nextBtn.classList.remove("hidden");
   }
